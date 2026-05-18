@@ -1,11 +1,10 @@
-import Navbar from '@/components/Navbar';
+import Banner from '@/components/Banner';
 import React from 'react';
 
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
-      This is the home page.
+      <Banner />
     </div>
   );
 };

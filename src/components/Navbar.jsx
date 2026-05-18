@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import logo from "../../public/assets/logo.png";
+import Link from 'next/link';
 
 const Navbar = () => {
     return (
@@ -21,20 +22,20 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 gap-4">
-                    <li>Home</li>
-                    <li>Tutors</li>
-                    <li>Add Tutors</li>
-                    <li>My Tutors</li>
-                    <li>Booked Sessions</li>
+                <ul className="menu menu-horizontal px-1">
+                    <li><Link href="/">Home</Link></li>
+                    <li><Link href="/tutors">Tutors</Link></li>
+                    <li><Link href="/add-tutor">Add Tutors</Link></li>
+                    <li><Link href="/my-tutors">My Tutors</Link></li>
+                    <li><Link href="/booked-sessions">Booked Sessions</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <ul className="menu menu-horizontal px-1 gap-4">
-                    <li>Login</li>
-                    <li>Sign Up</li>
+                <ul className="menu menu-horizontal px-1 ">
+                    <li><Link href="/login">Login</Link></li>
+                    <li><Link href="/signup">Sign Up</Link></li>
                 </ul>
-                
+
             </div>
         </div>
     );
