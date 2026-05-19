@@ -24,11 +24,14 @@ const Banner = () => {
                 loop={true}
                 className="h-full w-full"
             >
+                https://i.ibb.co.com/7xz9vB0w/a-modern-lifestyle-photograph-of-a-student-comfortably-learning-at-home-with-a.png
+https://i.ibb.co.com/cKr9rXJ7/a-professional-close-up-of-a-tutor-or-expert-explaining-a-complex-concept-on-a.png
+https://i.ibb.co.com/yn3pPW8V/a-professional-high-quality-photograph-of-a-diverse-student-and-a-friendly.png
 
                 <SwiperSlide>
                     <div className="w-full h-full relative">
                         <Image
-                            src="https://i.ibb.co.com/fVxnLBpR/unnamed.png"
+                            src="https://i.ibb.co.com/yn3pPW8V/a-professional-high-quality-photograph-of-a-diverse-student-and-a-friendly.png"
                             alt="Student and tutor collaborating"
                             fill
                             className="absolute inset-0 w-full h-full object-cover"
@@ -58,7 +61,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="w-full h-full relative">
                         <Image
-                            src="https://i.ibb.co.com/ymFssgM0/unnamed-1.png"
+                            src="https://i.ibb.co.com/cKr9rXJ7/a-professional-close-up-of-a-tutor-or-expert-explaining-a-complex-concept-on-a.png"
                             alt="Expert tutor teaching complex concepts"
                             fill
                             className="absolute inset-0 w-full h-full object-cover"
@@ -85,7 +88,7 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="w-full h-full relative">
                         <Image
-                            src="https://i.ibb.co.com/ccG7bw2X/unnamed-2.png"
+                            src="https://i.ibb.co.com/7xz9vB0w/a-modern-lifestyle-photograph-of-a-student-comfortably-learning-at-home-with-a.png"
                             alt="Flexible learning at home"
                             fill
                             className="absolute inset-0 w-full h-full object-cover"
