@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { AiFillSafetyCertificate } from 'react-icons/ai';
+import { MdVerified } from 'react-icons/md';
 
 const TutorCard = ({ tutor }) => {
     const [university, experience] = tutor.description.split(",") || [];
@@ -18,7 +19,7 @@ const TutorCard = ({ tutor }) => {
             <div className='p-5 space-y-5'>
                 <div className='flex items-center justify-between gap-1 '>
                     <div>
-                        <h2 className='text-xl font-bold'>{tutor.tutorName}</h2>
+                        <h2 className='text-xl font-bold flex items-center gap-1'>{tutor.tutorName} <MdVerified color='blue' /></h2>
                         <p className='text-sm text-[#6c696d]'>{university || "N/A"}</p>
                     </div>
                     <h2 className='text-2xl font-bold'>${tutor.hourlyFee}<span className='text-sm font-normal'>/per hour</span></h2>

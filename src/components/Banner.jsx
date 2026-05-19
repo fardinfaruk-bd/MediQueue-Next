@@ -73,7 +73,7 @@ const Banner = () => {
                                         Master complex subjects with help from industry-leading experts.
                                     </p>
                                     <div className="flex items-center justify-center md:justify-start">
-                                        <Link href="/tutors"><Button className={"text-white font-semibold py-6 rounded-lg flex items-center gap-2"}>Find Your Tutor <ArrowRight /></Button></Link>
+                                        <Link href="/all-tutors"><Button className={"text-white font-semibold py-6 rounded-lg flex items-center gap-2"}>Find Your Tutor <ArrowRight /></Button></Link>
                                     </div>
                                 </div>
                             </div>

@@ -1,9 +1,18 @@
+"use client"
 import Image from 'next/image';
 import React from 'react';
 import logo from "../../public/assets/logo.png";
 import Link from 'next/link';
+import { Avatar, Button } from '@heroui/react';
+import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user
+    const handleLogout = async () => {
+        await authClient.signOut();
+        window.location.reload();
+    };
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -14,7 +23,7 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        
+
                     </ul>
                 </div>
                 <div>
@@ -24,17 +33,38 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/tutors">Tutors</Link></li>
+                    <li><Link href="/all-tutors">Tutors</Link></li>
                     <li><Link href="/add-tutor">Add Tutors</Link></li>
                     <li><Link href="/my-tutors">My Tutors</Link></li>
                     <li><Link href="/booked-sessions">Booked Sessions</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <ul className="menu menu-horizontal px-1 ">
-                    <li><Link href="/login">Login</Link></li>
-                    <li><Link href="/signup">Sign Up</Link></li>
-                </ul>
+                <>
+                    {isPending ? <span className="loading loading-spinner loading-xl"></span> :
+                        user ? <>
+                            <div className='flex items-center gap-2'>
+                                <p >Hello! {user.name}</p>
+                                <Avatar>
+                                    <Avatar.Image referrerPolicy='no-referrer' alt={user.name} src={user.image} />
+                                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                                </Avatar>
+
+
+                                <Button variant="danger" onClick={handleLogout}>Logout</Button>
+                            </div>
+                        </> : <>
+                            <div className='flex gap-3'>
+                                <Link href="/login">
+                                    <Button>Login</Button>
+                                </Link>
+                                <Link href="/register">
+                                    <Button variant='outline' className={"border-blue-500 text-blue-500"}>Register</Button>
+                                </Link>
+                            </div>
+                        </>
+                    }
+                </>
 
             </div>
         </div>
