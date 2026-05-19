@@ -1,22 +1,29 @@
 import BookSessionModal from '@/components/BookSessionModal';
+import { auth } from '@/lib/auth';
 import { getTutorById } from '@/lib/data';
-import {  Card } from '@heroui/react';
+import { Card } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 
 import { MdVerified } from 'react-icons/md';
 
 const AllDetailsPage = async ({ params }) => {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+    const user = session?.user;
+    
     const { id } = await params;
     const tutorDetails = await getTutorById(id);
     console.log(tutorDetails);
     return (
-        <div className='mt-10'>
-            <Card className='min-h-[60vh] border border-gray-300 rounded-none'>
+        <div >
+            <Card className='min-h-[60vh] border border-gray-300 bg-[#EEF0FF] rounded-none flex items-center justify-center'>
                 <div className='flex justify-between max-w-10xl mx-auto'>
                     <div className='flex items-center gap-10'>
                         <Card className='p-5 border border-gray-300 w-96 flex items-center gap-5'>
-                            <div  className='space-y-5'>
+                            <div className='space-y-5'>
                                 <div className='flex items-center justify-center'>
                                     <Image src={tutorDetails.imageUrl} alt={tutorDetails.tutorName} width={300} height={300} className=' h-60 w-60 object-cover rounded-full ' />
                                 </div>
@@ -37,11 +44,11 @@ const AllDetailsPage = async ({ params }) => {
                             <p className='text-xl opacity-80'>Teaching Mode: {tutorDetails.teachingMode} </p>
                             <p className='text-xl opacity-80'>Available Session : {tutorDetails.availableSchedule}</p>
                             <div className='mt-10'>
-                                <BookSessionModal tutor={tutorDetails} />
+                                <BookSessionModal tutor={tutorDetails} user={user} />
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </Card>
         </div>

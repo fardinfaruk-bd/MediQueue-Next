@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";

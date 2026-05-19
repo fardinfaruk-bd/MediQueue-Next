@@ -15,3 +15,9 @@ export const getTutorById = async(id) =>{
     const data = await res.json();
     return data;
 }
+
+export const getBookedSessions = async() => {
+    const res = await fetch("http://localhost:5000/booked-sessions");
+    const data = await res.json();
+    return data;
+}

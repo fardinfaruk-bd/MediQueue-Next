@@ -18,22 +18,21 @@ export const createTutor = async (formData) => {
   return data;
 };
 
-export const bookSession = async (formData) => {
-  "use server";
-  const BookedSessionData = {
-    ...Object.fromEntries(formData.entries()),
-    status: "success",
-  };
-  console.log("session booking data", BookedSessionData);
-  const res = await fetch("http://localhost:5000/booked-sessions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(BookedSessionData),
-  });
-  const data = await res.json();
-  console.log("after booking session", data);
-  return data;
+export const cancelSession = async (id) => {
+    
+    await fetch(
+        `http://localhost:5000/booked-sessions/${id}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                status: "Cancelled"
+            }),
+        }
+    );
+
+    revalidatePath("/booked-sessions");
 };
 
