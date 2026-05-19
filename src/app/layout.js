@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ToastContainer } from "react-toastify";
+import Footer from "@/components/Footer";
 
 
 
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
-
+        <Footer />
         <ToastContainer />
       </body>
     </html>
