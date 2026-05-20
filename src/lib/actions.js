@@ -1,9 +1,21 @@
+import { headers } from "next/headers";
+import { auth } from "./auth";
 
 
 export const createTutor = async (formData) => {
   "use server";
-  const newTutor = Object.fromEntries(formData.entries());
-  console.log("new tutor data", newTutor);
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+  const Tutor = Object.fromEntries(formData.entries());
+  const newTutor = {
+    ...Tutor,
+    totalSlot: Number(Tutor.totalSlot),
+    userId: session.user.id,
+    userEmail: session.user.email,
+    registeredDate: new Date().toISOString(),
+
+  }
   const res = await fetch("http://localhost:5000/tutors", {
     method: "POST",
     headers: {
@@ -17,6 +29,8 @@ export const createTutor = async (formData) => {
 
   return data;
 };
+
+
 
 export const cancelSession = async (id) => {
     

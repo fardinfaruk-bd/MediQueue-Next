@@ -44,6 +44,7 @@ const AllDetailsPage = async ({ params }) => {
                             <p className='text-xl opacity-80'>Teaching Mode: {tutorDetails.teachingMode} </p>
                             <p className='text-xl opacity-80'>Available Session : {tutorDetails.availableSchedule}</p>
                             <div className='mt-10'>
+                                {tutorDetails.totalSlot === 0 && <p className='text-red-600'>No Slot Available</p>}
                                 <BookSessionModal tutor={tutorDetails} user={user} />
                             </div>
                         </div>

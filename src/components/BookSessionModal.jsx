@@ -1,18 +1,21 @@
 "use client"
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
 
 import React from 'react';
 import { FaStamp } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const BookSessionModal = ({ tutor, user }) => {
+    const router = useRouter();
     const handleBookSession = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const BookedSessionData = {
             ...Object.fromEntries(formData.entries()),
             subject: tutor.subject,
+            tutorId: tutor._id,
             hourlyFee: tutor.hourlyFee,
             sessionStartDate: tutor.sessionStartDate,
             sessionEndDate: tutor.sessionEndDate,
@@ -28,11 +31,16 @@ const BookSessionModal = ({ tutor, user }) => {
         });
         const BookedData = await res.json();
         toast.success(`Successfully Booked ${BookedSessionData.tutorName}!`);
-        redirect("/booked-sessions");
+        router.refresh();
     }
+
+    const isBookedAllowed = new Date().setHours(0, 0, 0, 0) > new Date(tutor.sessionEndDate).setHours(0, 0, 0, 0) 
+        console.log(isBookedAllowed, "Book validation");
+
     return (
+        
         <Modal>
-            <Button variant="primary" className={"w-full"}>Book Session</Button>
+            <Button disabled className={"w-full"}isDisabled={isBookedAllowed || tutor.totalSlot === 0}>Book Session</Button>
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
                     <Modal.Dialog className="sm:max-w-md">
@@ -49,7 +57,7 @@ const BookSessionModal = ({ tutor, user }) => {
                         <Modal.Body className="p-6">
                             <Surface variant="default">
                                 <form className="flex flex-col gap-4" onSubmit={handleBookSession}>
-                                    <TextField className="w-full" name="StudentName" type="text">
+                                    <TextField className="w-full" name="StudentName" type="text" defaultValue={`${user?.name}`}>
                                         <Label>Student Name</Label>
                                         <Input placeholder="Enter your name" />
                                     </TextField>
