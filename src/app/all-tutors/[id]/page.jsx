@@ -19,17 +19,17 @@ const AllDetailsPage = async ({ params }) => {
     console.log(tutorDetails);
     return (
         <div >
-            <Card className='min-h-[60vh] border border-gray-300 bg-[#EEF0FF] rounded-none flex items-center justify-center'>
+            <Card className='min-h-[60vh] rounded-none flex items-center justify-center'>
                 <div className='flex justify-between max-w-10xl mx-auto'>
                     <div className='flex items-center gap-10'>
-                        <Card className='p-5 border border-gray-300 w-96 flex items-center gap-5'>
+                        <Card className='p-5 shadow-lg bg-[#EEF0FF] w-96 flex items-center gap-5'>
                             <div className='space-y-5'>
                                 <div className='flex items-center justify-center'>
                                     <Image src={tutorDetails.imageUrl} alt={tutorDetails.tutorName} width={300} height={300} className=' h-60 w-60 object-cover rounded-full ' />
                                 </div>
                                 <div >
-                                    <h1 className='text-3xl font-bold flex items-center gap-1 justify-center'>{tutorDetails.tutorName} <MdVerified color='blue' /></h1>
-                                    <p className='opacity-50 text-center'>{tutorDetails.description}</p>
+                                    <h1 className='text-3xl text-black font-bold flex items-center gap-1 justify-center'>{tutorDetails.tutorName} <MdVerified color='blue' /></h1>
+                                    <p className='opacity-50 text-black text-center'>{tutorDetails.description}</p>
                                 </div>
                             </div>
                         </Card>

@@ -3,14 +3,11 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "@/components/Footer";
-
-
+import NextThemeProvider from "@/providers/NextThemeProvider";
 
 const outfit = Outfit({
   subsets: ["latin"],
 });
-
-
 
 export const metadata = {
   title: "Create Next App",
@@ -22,12 +19,15 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       data-theme="light"
+      suppressHydrationWarning
       className={`${outfit.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <NextThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </NextThemeProvider>
         <ToastContainer />
       </body>
     </html>

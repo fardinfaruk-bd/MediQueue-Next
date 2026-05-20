@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { auth } from "./auth";
+import { redirect } from "next/dist/server/api-utils";
 
 
 export const createTutor = async (formData) => {
@@ -16,7 +17,8 @@ export const createTutor = async (formData) => {
     registeredDate: new Date().toISOString(),
 
   }
-  const res = await fetch("http://localhost:5000/tutors", {
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,27 +28,32 @@ export const createTutor = async (formData) => {
   const data = await res.json();
   console.log("after post", data);
   //TODO: Redirect path after successful creation
-
+  if(res.ok){
+    redirect("/my-tutors")
+  }
   return data;
 };
 
 
 
 export const cancelSession = async (id) => {
-    
-    await fetch(
-        `http://localhost:5000/booked-sessions/${id}`,
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions/${id}`,
         {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
                 status: "Cancelled"
-            }),
-        }
-    );
+            }),  
+        });
 
-    revalidatePath("/booked-sessions");
+    const data = await res.json();
+    return data;
+
 };
 

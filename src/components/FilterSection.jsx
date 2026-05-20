@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Input } from "@heroui/react";
 import { useEffect, useState } from "react";
 
@@ -21,8 +22,8 @@ const FilterSection = ({ setTutors }) => {
 
   const handleReset = async () => {
     setFilters(initialState);
-
-    const res = await fetch("http://localhost:5000/tutors");
+    
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors`);
     const data = await res.json();
 
     setTutors(data);
@@ -43,10 +44,8 @@ const FilterSection = ({ setTutors }) => {
       if (filters.sessionEndDate) {
         params.append("sessionEndDate", filters.sessionEndDate);
       }
-
-      const res = await fetch(
-        `http://localhost:5000/tutors?${params}`
-      );
+      
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors?${params}`);
 
       const data = await res.json();
       setTutors(data);

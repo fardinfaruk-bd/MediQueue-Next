@@ -1,4 +1,5 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 
@@ -12,6 +13,7 @@ const BookSessionModal = ({ tutor, user }) => {
     const handleBookSession = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
+        const session = await authClient.getSession();
         const BookedSessionData = {
             ...Object.fromEntries(formData.entries()),
             subject: tutor.subject,
@@ -20,12 +22,15 @@ const BookSessionModal = ({ tutor, user }) => {
             sessionStartDate: tutor.sessionStartDate,
             sessionEndDate: tutor.sessionEndDate,
             availableSchedule: tutor.availableSchedule,
+            userEmail: session?.user?.email,
             status: "success",
         };
-        const res = await fetch("http://localhost:5000/booked-sessions", {
+        const { data: tokenData } = await authClient.token();
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify(BookedSessionData),
         });

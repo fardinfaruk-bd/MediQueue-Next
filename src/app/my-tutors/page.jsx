@@ -15,10 +15,14 @@ const MyTutorsPage = async () => {
     if (!session) {
         return <div>Not logged in</div>;
     }
-
-    const res = await fetch(
-        `http://localhost:5000/my-tutors?email=${session.user.email}`
-    );
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-tutors?email=${session.user.email}`, {
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+    });
 
     const MyTutors = await res.json();
 
@@ -26,8 +30,8 @@ const MyTutorsPage = async () => {
 
     
     return (
-        <div className='w-[90%]  mx-auto'>
-            {MyTutors > 0 ?<Table>
+        <div className='w-[90%] min-h-screen mx-auto'>
+            {MyTutors.length > 0 ?<Table>
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-150">
                         <Table.Header>

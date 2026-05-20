@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
@@ -7,28 +8,23 @@ import { MdOutlineCancel } from "react-icons/md";
 import { toast } from "react-toastify";
 
 const CancelButton = ({ bookedSession, status }) => {
-    
+
     const router = useRouter();
     const handleCancel = async (id) => {
-        
-        const res = await fetch(
-            `http://localhost:5000/booked-sessions/${id}`,
-            {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    status: "Cancelled",
-                }),
-            }
+        const { data: tokenData } = await authClient.token();
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`,
+            },
+            body: JSON.stringify({
+                status: "Cancelled",
+            }),
+        }
         );
-
-        const data = await res.json();
-
-        
-        if (data.modifiedCount > 0) {
-            toast.success("Session Cancelled");
+        if (res.ok) {
+            toast.success(`Successfully Cancelled ${bookedSession.tutorName}!`);
             router.refresh();
         }
     };

@@ -24,9 +24,7 @@ const Banner = () => {
                 loop={true}
                 className="h-full w-full"
             >
-                https://i.ibb.co.com/7xz9vB0w/a-modern-lifestyle-photograph-of-a-student-comfortably-learning-at-home-with-a.png
-https://i.ibb.co.com/cKr9rXJ7/a-professional-close-up-of-a-tutor-or-expert-explaining-a-complex-concept-on-a.png
-https://i.ibb.co.com/yn3pPW8V/a-professional-high-quality-photograph-of-a-diverse-student-and-a-friendly.png
+                
 
                 <SwiperSlide>
                     <div className="w-full h-full relative">

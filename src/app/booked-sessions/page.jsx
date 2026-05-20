@@ -1,4 +1,5 @@
 import CancelButton from '@/components/CancelBtn';
+import NoDataFound from '@/components/NoDataFound';
 import { getBookedSessions } from '@/lib/data';
 import { Table } from '@heroui/react';
 import React from 'react';
@@ -8,8 +9,8 @@ const BookedSessionPage = async () => {
     const BookSessions = await getBookedSessions();
     console.log(BookSessions);
     return (
-        <div className='w-[90%] mx-auto'>
-            <Table>
+        <div className='w-[90%] mx-auto min-h-screen'>
+            {BookSessions.length === 0 ? <NoDataFound /> : <Table>
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-150">
                         <Table.Header>
@@ -45,7 +46,7 @@ const BookedSessionPage = async () => {
                         </Table.Body>
                     </Table.Content>
                 </Table.ScrollContainer>
-            </Table>
+            </Table>}
         </div>
     );
 };
