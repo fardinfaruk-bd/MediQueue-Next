@@ -1,4 +1,5 @@
 import CancelButton from '@/components/CancelBtn';
+import NoDataFound from '@/components/NoDataFound';
 import { auth } from '@/lib/auth';
 import { Button, Table } from '@heroui/react';
 import { headers } from 'next/headers';
@@ -22,9 +23,11 @@ const MyTutorsPage = async () => {
     const MyTutors = await res.json();
 
     console.log("my tutors are", MyTutors);
+
+    
     return (
-        <div className='w-[90%] mx-auto'>
-            <Table>
+        <div className='w-[90%]  mx-auto'>
+            {MyTutors > 0 ?<Table>
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-150">
                         <Table.Header>
@@ -45,14 +48,14 @@ const MyTutorsPage = async () => {
                                     <Table.Cell>{tutor.availableSchedule}</Table.Cell>
                                     <Table.Cell>{tutor.hourlyFee}</Table.Cell>
                                     <Table.Cell>{tutor.totalSlot}</Table.Cell>
-                                    <Table.Cell><Button>Cancel</Button></Table.Cell>
+                                    <Table.Cell>{new Date(tutor.registeredDate).toLocaleDateString()}</Table.Cell>
                                     <Table.Cell><Button>Cancel</Button></Table.Cell>
                                 </Table.Row>
                             ))}
                         </Table.Body>
                     </Table.Content>
                 </Table.ScrollContainer>
-            </Table>
+            </Table>: <NoDataFound />}
         </div>
     );
 };
