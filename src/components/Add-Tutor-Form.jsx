@@ -3,8 +3,8 @@ import React from 'react';
 
 const AddTutorForm = ({ createTutorAction }) => {
     return (
-        <Card className='shadow-lg'>
-            <form action={createTutorAction} className="p-10 space-y-8 w-3xl">
+        <Card className='shadow-lg '>
+            <form action={createTutorAction} className="p-10 space-y-8 max-w-3xl">
 
                 {/* Section: Basic Information */}
                 <div className="space-y-6">
