@@ -7,6 +7,8 @@ import { Avatar, Button } from '@heroui/react';
 import { authClient } from '@/lib/auth-client';
 import { ThemeSwitch } from './ThemeToggleButton';
 import { useRouter } from 'next/navigation';
+import NavLinks from './NavLinks';
+
 
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession()
@@ -26,11 +28,11 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/all-tutors">Tutors</Link></li>
-                        <li><Link href="/add-tutor">Add Tutors</Link></li>
-                        <li><Link href="/my-tutors">My Tutors</Link></li>
-                        <li><Link href="/booked-sessions">Booked Sessions</Link></li>
+                        <li><NavLinks href="/">Home</NavLinks></li>
+                        <li><NavLinks href="/all-tutors">Tutors</NavLinks></li>
+                        <li><NavLinks href="/add-tutor">Add Tutors</NavLinks></li>
+                        <li><NavLinks href="/my-tutors">My Tutors</NavLinks></li>
+                        <li><NavLinks href="/booked-sessions">Booked Sessions</NavLinks></li>
                     </ul>
                 </div>
 
@@ -40,11 +42,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/all-tutors">Tutors</Link></li>
-                    <li><Link href="/add-tutor">Add Tutors</Link></li>
-                    <li><Link href="/my-tutors">My Tutors</Link></li>
-                    <li><Link href="/booked-sessions">Booked Sessions</Link></li>
+                    <li><NavLinks href="/">Home</NavLinks></li>
+                    <li><NavLinks href="/all-tutors">Tutors</NavLinks></li>
+                    <li><NavLinks href="/add-tutor">Add Tutors</NavLinks></li>
+                    <li><NavLinks href="/my-tutors">My Tutors</NavLinks></li>
+                    <li><NavLinks href="/booked-sessions">Booked Sessions</NavLinks></li>
                 </ul>
             </div>
             <div className="navbar-end space-x-5">

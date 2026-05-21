@@ -1,3 +1,4 @@
+import NotFound from '@/app/not-found';
 import BookSessionModal from '@/components/BookSessionModal';
 import { auth } from '@/lib/auth';
 import { getTutorById } from '@/lib/data';
@@ -13,9 +14,13 @@ const AllDetailsPage = async ({ params }) => {
         headers: await headers(),
     });
     const user = session?.user;
-    
+
     const { id } = await params;
     const tutorDetails = await getTutorById(id);
+
+    if (tutorDetails.tutorId !== id) {
+        return <NotFound />
+    }
     console.log(tutorDetails);
     return (
         <div >
