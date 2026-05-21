@@ -1,11 +1,12 @@
 "use client";
+import { authClient } from '@/lib/auth-client';
 import { TrashBin } from '@gravity-ui/icons';
-import { Button } from '@heroui/react';
+import { AlertDialog, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const AlertDialog = ({ tutor }) => {
+const AlertDialogBtn = ({ tutor }) => {
     const router = useRouter();
     const handleDelete = async () => {
         const { data: tokenData } = await authClient.token();
@@ -55,4 +56,4 @@ const AlertDialog = ({ tutor }) => {
     );
 };
 
-export default AlertDialog;
+export default AlertDialogBtn;
