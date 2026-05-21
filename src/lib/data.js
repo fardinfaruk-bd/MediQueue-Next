@@ -15,7 +15,14 @@ export const getAllTutors = async() =>{
 
 
 export const getTutorById = async(id) =>{
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${id}`);
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${id}`,{
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+    });
     const data = await res.json();
     return data;
 }

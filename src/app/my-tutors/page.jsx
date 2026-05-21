@@ -1,9 +1,12 @@
 import CancelButton from '@/components/CancelBtn';
 import NoDataFound from '@/components/NoDataFound';
+import UpdateTutorModal from '@/components/UpdateTutorModal';
 import { auth } from '@/lib/auth';
+import { TrashBin } from '@gravity-ui/icons';
 import { Button, Table } from '@heroui/react';
 import { headers } from 'next/headers';
 import React from 'react';
+import { BiEdit } from 'react-icons/bi';
 
 const MyTutorsPage = async () => {
     const session = await auth.api.getSession({
@@ -53,7 +56,11 @@ const MyTutorsPage = async () => {
                                     <Table.Cell>{tutor.hourlyFee}</Table.Cell>
                                     <Table.Cell>{tutor.totalSlot}</Table.Cell>
                                     <Table.Cell>{new Date(tutor.registeredDate).toLocaleDateString()}</Table.Cell>
-                                    <Table.Cell><Button>Cancel</Button></Table.Cell>
+                                    <Table.Cell>
+                                        <UpdateTutorModal tutor={tutor} />
+                                        <Button variant='outline' className={"border border-red-500 text-red-500"}><TrashBin /></Button>
+                                        
+                                    </Table.Cell>
                                 </Table.Row>
                             ))}
                         </Table.Body>

@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { auth } from "./auth";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
+
 
 
 export const createTutor = async (formData) => {
@@ -55,5 +56,19 @@ export const cancelSession = async (id) => {
     const data = await res.json();
     return data;
 
+};
+
+
+export const updateTutor = async (id, formData) => {
+    const Tutor = Object.fromEntries(formData.entries());
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Tutor),
+    });
+    const data = await res.json();
+    return data;
 };
 
