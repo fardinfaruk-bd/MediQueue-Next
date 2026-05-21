@@ -13,7 +13,6 @@ const BookSessionModal = ({ tutor, user }) => {
     const handleBookSession = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const session = await authClient.getSession();
         const BookedSessionData = {
             ...Object.fromEntries(formData.entries()),
             subject: tutor.subject,
@@ -22,10 +21,10 @@ const BookSessionModal = ({ tutor, user }) => {
             sessionStartDate: tutor.sessionStartDate,
             sessionEndDate: tutor.sessionEndDate,
             availableSchedule: tutor.availableSchedule,
-            userEmail: session?.user?.email,
             status: "success",
         };
         const { data: tokenData } = await authClient.token();
+        console.log(data);
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions`, {
             method: "POST",
             headers: {
