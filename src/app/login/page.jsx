@@ -1,17 +1,18 @@
 "use client"
 
 import { authClient } from "@/lib/auth-client";
-import { Check } from "@gravity-ui/icons";
 import { Button, Card, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import React from 'react';
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 
 const LoginPage = () => {
+    const [isShowPassword, setIsShowPassword] = useState(false)
     const OnSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -47,7 +48,7 @@ const LoginPage = () => {
                 <p className="text-[#6c696d]">Resume your Journey with MediQueue</p>
             </div>
             <Card className="border border-gray-100 rounded-none">
-                <Form className="flex w-96 flex-col gap-4 py-10 px-3" onSubmit={OnSubmit} >
+                <Form className="flex w-auto sm:w-96 flex-col gap-4 py-5 sm:py-10 px-3" onSubmit={OnSubmit} >
 
                     <TextField
 
@@ -68,18 +69,21 @@ const LoginPage = () => {
 
                     <TextField
                         isRequired
+                        className={"relative"}
                         minLength={8}
                         name="password"
-                        type="password"
+                        type={isShowPassword ? "text" : "password"}
                     >
                         <Label>Password</Label>
                         <Input placeholder="Enter your password" className="rounded-none bg-gray-100" />
+                        <span className='absolute right-2 top-9 cursor-pointer' onClick={() => setIsShowPassword(!isShowPassword)}>{isShowPassword ? <FaEyeSlash /> : <FaEye />}</span>
                         <FieldError />
                     </TextField>
+                    <p className="text-blue-500 font-bold mt-1 cursor-pointer">Forget Password?</p>
 
                     <div className="flex flex-col gap-2">
                         <Button type="submit" className="w-full rounded-none bg-blue-500">
-                            <Check />
+                            
                             Login
                         </Button>
 

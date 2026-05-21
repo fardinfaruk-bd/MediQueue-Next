@@ -55,7 +55,7 @@ const FilterSection = ({ setTutors }) => {
   }, [filters, setTutors]);
 
   return (
-    <div className="grid grid-cols-4 gap-4 items-start max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start max-w-5xl mx-auto">
 
       {/* Tutor Name */}
       <div className="flex flex-col w-full">
@@ -100,7 +100,7 @@ const FilterSection = ({ setTutors }) => {
 
       {/* Reset */}
       <div className="mt-7">
-        <Button onPress={handleReset}>
+        <Button onPress={handleReset} className="w-full">
           Reset
         </Button>
       </div>

@@ -10,7 +10,7 @@ const BookedSessionPage = async () => {
     console.log(BookSessions);
     return (
         <div className='w-[90%] mx-auto min-h-screen'>
-            {BookSessions.length === 0 ? <NoDataFound /> : <Table>
+            {BookSessions?.length === 0 ? <NoDataFound /> : <Table>
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-150">
                         <Table.Header>

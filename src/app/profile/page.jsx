@@ -21,8 +21,8 @@ const userProfilePage = () => {
                 </figure>
                 <div className="card-body text-center space-y-6  items-center">
                     <div>
-                        <h2 className="font-bold font text-2xl ">{user?.name}</h2>
-                        <p className=''>{user?.email}</p>
+                        <h2 className="font-bold text-black font text-2xl ">{user?.name}</h2>
+                        <p className='text-black opacity-60'>{user?.email}</p>
                     </div>
                     <InfoUpdateModal />
                 </div>

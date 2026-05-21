@@ -50,13 +50,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end space-x-5">
-                <ThemeSwitch />
+                
                 <>
                     {isPending ? <span className="loading loading-spinner loading-xl"></span> :
                         user ? <>
                             <div className='flex items-center gap-2'>
+                                <ThemeSwitch />
                                 <div className="dropdown dropdown-end">
                                     <div tabIndex={0} role="button">
+                                        
                                         <Avatar>
                                             <Avatar.Image
                                                 referrerPolicy="no-referrer"
@@ -73,11 +75,11 @@ const Navbar = () => {
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-100 mt-3 w-52  shadow space-y-5"
                                     >
-                                        <li><Link href="/profile" className='font-bold bg-base-300 p-2'>Profile</Link></li>
+                                        <li><Link href="/profile" className='font-bold text-black bg-base-300 p-2'>Profile</Link></li>
                                         <Button variant="danger" onClick={handleLogout} className={"w-full"}>Logout</Button>
                                     </ul>
                                 </div>
-
+                                
                             </div>
                         </> : <>
                             <div className='flex gap-3'>

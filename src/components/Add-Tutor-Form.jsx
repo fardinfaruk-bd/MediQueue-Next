@@ -1,4 +1,4 @@
-import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select, Card } from '@heroui/react';
+import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select, Card, Description } from '@heroui/react';
 import React from 'react';
 
 const AddTutorForm = ({ createTutorAction }) => {
@@ -95,30 +95,30 @@ const AddTutorForm = ({ createTutorAction }) => {
                             </div>
 
                             <div className='col-span-2 sm:col-span-1' >
-                                <TextField name="sessionStartDate" isRequired>
+                                <TextField name="sessionStartDate" isRequired >
                                     <Label>Session Start Date</Label>
                                     <Input
                                         type="date"
                                         placeholder="2027-01-01"
-                                        className="rounded-2xl"
+                                        className="rounded-2xl w-full"
                                     />
                                     <FieldError />
                                 </TextField>
                             </div>
 
                             <div className='col-span-2 sm:col-span-1'>
-                                <TextField name="sessionEndDate" isRequired>
+                                <TextField name="sessionEndDate" isRequired >
                                     <Label>Session End Date</Label>
                                     <Input
                                         type="date"
                                         placeholder="2027-06-30"
-                                        className="rounded-2xl"
+                                        className="rounded-2xl w-full"
                                     />
                                     <FieldError />
                                 </TextField>
                             </div>
                             <div className='col-span-2 sm:col-span-1'>
-                                <TextField name="hourlyFee" isRequired>
+                                <TextField name="hourlyFee" isRequired className="w-full">
                                     <Label>Hourly Fee (USD)</Label>
                                     <Input
                                         type="number"
@@ -130,7 +130,7 @@ const AddTutorForm = ({ createTutorAction }) => {
                             </div>
 
                             <div className='col-span-2 sm:col-span-1'>
-                                <TextField name="totalSlot" isRequired>
+                                <TextField name="totalSlot" isRequired className="w-full">
                                     <Label>Total Slots Available</Label>
                                     <Input
                                         type="number"
@@ -142,7 +142,7 @@ const AddTutorForm = ({ createTutorAction }) => {
                             </div>
 
                             <div className='col-span-2 sm:col-span-1'>
-                                <TextField name="location" isRequired>
+                                <TextField name="location" isRequired className="w-full">
                                     <Label>Location (Area/City)</Label>
                                     <Input
                                         type="text"
@@ -202,6 +202,7 @@ const AddTutorForm = ({ createTutorAction }) => {
                                     placeholder="Describe the Institution Experience"
 
                                 />
+                                <Description>Must Provide Your details in this Format (University, Years Experience)</Description>
                                 <FieldError />
                             </TextField>
                         </div>

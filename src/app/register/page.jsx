@@ -1,16 +1,17 @@
 "use client"
-
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import React from 'react';
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 
 const RegisterPage = () => {
+    const [isShowPassword, setIsShowPassword] = useState(false)
     const OnSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -49,7 +50,7 @@ const RegisterPage = () => {
                 <p className="text-[#6c696d]">Start your Journey with MediQueue</p>
             </div>
             <Card className="border border-gray-100 rounded-none">
-                <Form className="flex w-96 flex-col gap-4 py-10 px-3" onSubmit={OnSubmit} >
+                <Form className="flex w-auto sm:w-96 flex-col gap-4 py-5 sm:py-10 px-3" onSubmit={OnSubmit} >
                     <TextField
 
                         isRequired
@@ -92,8 +93,9 @@ const RegisterPage = () => {
                     <TextField
                         isRequired
                         minLength={8}
+                        className={"relative"}
                         name="password"
-                        type="password"
+                        type={isShowPassword ? "text" : "password"}
                         validate={(value) => {
                             if (value.length < 8) {
                                 return "Password must be at least 8 characters";
@@ -109,6 +111,7 @@ const RegisterPage = () => {
                     >
                         <Label>Password</Label>
                         <Input placeholder="Enter your password" className="rounded-none bg-gray-100" />
+                        <span className='absolute right-2 top-9 cursor-pointer' onClick={() => setIsShowPassword(!isShowPassword)}>{isShowPassword ? <FaEyeSlash /> : <FaEye />}</span>
                         <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                         <FieldError />
                     </TextField>

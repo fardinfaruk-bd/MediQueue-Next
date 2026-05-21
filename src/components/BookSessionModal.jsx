@@ -63,23 +63,23 @@ const BookSessionModal = ({ tutor, user }) => {
                                 <form className="flex flex-col gap-4" onSubmit={handleBookSession}>
                                     <TextField className="w-full" name="StudentName" type="text" defaultValue={`${user?.name}`}>
                                         <Label>Student Name</Label>
-                                        <Input placeholder="Enter your name" />
+                                        <Input placeholder="Enter your name" disabled/>
                                     </TextField>
-                                    <TextField className="w-full" name="StudentPhone" type="tel">
+                                    <TextField className="w-full" name="StudentPhone" type="tel" required>
                                         <Label>Phone</Label>
                                         <Input placeholder="Enter your phone number" />
                                     </TextField>
-                                    <TextField className="w-full" name="tutorName" type="text" defaultValue={`${tutor.tutorName}`} readOnly>
+                                    <TextField className="w-full" name="tutorName" type="text" defaultValue={`${tutor.tutorName}`} >
                                         <Label>Tutor Name</Label>
-                                        <Input placeholder="Enter the tutor's name" />
+                                        <Input placeholder="Enter the tutor's name" disabled/>
                                     </TextField>
-                                    <TextField className="w-full" name="tutorId" type="text" defaultValue={`${tutor._id}`} readOnly>
+                                    <TextField className="w-full" name="tutorId" type="text" defaultValue={`${tutor._id}`} >
                                         <Label>Tutor Id</Label>
-                                        <Input placeholder="Enter the tutor's id" />
+                                        <Input placeholder="Enter the tutor's id" disabled/>
                                     </TextField>
                                     <TextField className="w-full" name="StudentEmail" type="email" defaultValue={`${user?.email}`}>
                                         <Label></Label>
-                                        <Input placeholder="Enter your email" />
+                                        <Input placeholder="Enter your email" disabled/>
                                     </TextField>
 
                                     <Modal.Footer>

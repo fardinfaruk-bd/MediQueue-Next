@@ -7,10 +7,10 @@ const CallToAction = () => {
         <div>
             <section className="bg-[#DBE1FF] py-20">
                 <div className=" text-center">
-                    <h2 className="text-2xl md:text-5xl font-bold mb-6 ">
+                    <h2 className="text-2xl md:text-5xl text-black font-bold mb-6 ">
                         Ready to excel in your studies?
                     </h2>
-                    <p className="text-lg font-light mb-10 max-w-2xl mx-auto">
+                    <p className="text-lg font-light mb-10 text-black opacity-60 max-w-2xl mx-auto">
                         Take the first step toward academic mastery with a tutor who understands your goals.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">

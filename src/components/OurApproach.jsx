@@ -14,10 +14,10 @@ const OurApproach = () => {
                         <span className="text-blue-500 font-bold  uppercase  mb-4 block">
                             Our Approach
                         </span>
-                        <h2 className="text-3xl font-bold mb-4 ">
+                        <h2 className="text-3xl text-black font-bold mb-4 ">
                             Data-Driven Success Rates
                         </h2>
-                        <p className=" opacity-60 max-w-xl">
+                        <p className="text-black opacity-60 max-w-xl">
                             We combine academic rigor with modern technology to provide a learning environment where 94% of students report grade improvements within 3 months.
                         </p>
                     </div>
@@ -34,7 +34,7 @@ const OurApproach = () => {
                             <div className="text-3xl font-semibold text-blue-500">
                                 500k+
                             </div>
-                            <div className="text-sm opacity-60">
+                            <div className="text-sm text-black opacity-60">
                                 Lessons Completed
                             </div>
                         </div>
@@ -55,10 +55,10 @@ const OurApproach = () => {
                     <div className=" text-blue-500 text-4xl mb-6">
                         <LuBookOpenText />
                     </div>
-                    <h3 className="font-bold text-2xl mb-2">
+                    <h3 className="font-bold text-black text-2xl mb-2">
                         Personal Mentorship
                     </h3>
-                    <p className=" opacity-60 text-sm">
+                    <p className="text-black opacity-60 text-sm">
                         Go beyond simple homework help with long-term academic mentorship.
                     </p>
                 </div>
