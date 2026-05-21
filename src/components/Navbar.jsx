@@ -9,7 +9,7 @@ import { ThemeSwitch } from './ThemeToggleButton';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
-    const { data: session, isPending } =  authClient.useSession()
+    const { data: session, isPending } = authClient.useSession()
     const user = session?.user
     const router = useRouter();
     const handleLogout = async () => {
@@ -53,13 +53,29 @@ const Navbar = () => {
                     {isPending ? <span className="loading loading-spinner loading-xl"></span> :
                         user ? <>
                             <div className='flex items-center gap-2'>
-                                <Avatar>
-                                    <Avatar.Image referrerPolicy='no-referrer' alt={user?.name} src={user?.image} />
-                                    <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
-                                </Avatar>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button">
+                                        <Avatar>
+                                            <Avatar.Image
+                                                referrerPolicy="no-referrer"
+                                                alt={user?.name}
+                                                src={user?.image}
+                                            />
+                                            <Avatar.Fallback>
+                                                {user?.name?.charAt(0)}
+                                            </Avatar.Fallback>
+                                        </Avatar>
+                                    </div>
 
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-100 mt-3 w-52  shadow space-y-5"
+                                    >
+                                        <li><Link href="/profile" className='font-bold bg-base-300 p-2'>Profile</Link></li>
+                                        <Button variant="danger" onClick={handleLogout} className={"w-full"}>Logout</Button>
+                                    </ul>
+                                </div>
 
-                                <Button variant="danger" onClick={handleLogout}>Logout</Button>
                             </div>
                         </> : <>
                             <div className='flex gap-3'>

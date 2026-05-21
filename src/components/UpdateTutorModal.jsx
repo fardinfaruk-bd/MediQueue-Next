@@ -1,8 +1,10 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, Modal, Surface, TextField, Select, ListBox, TextArea } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { BiEdit } from 'react-icons/bi';
+import { toast } from 'react-toastify';
 
 const UpdateTutorModal = ({ tutor }) => {
     const router = useRouter();
@@ -16,9 +18,9 @@ const UpdateTutorModal = ({ tutor }) => {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "authorization": `Bearer ${tokenData?.token}`
+                 authorization: `Bearer ${tokenData?.token}`
             },
-            body: JSON.stringify(destinationData)
+            body: JSON.stringify(tutorData)
         })
         const data = await res.json();
 
@@ -48,7 +50,7 @@ const UpdateTutorModal = ({ tutor }) => {
                         </Modal.Header>
                         <Modal.Body >
                             <Surface variant="default">
-                                <form className=" space-y-8 ">
+                                <form className=" space-y-8" onSubmit={onSubmit}>
 
                                     {/* Section: Basic Information */}
                                     <div className="space-y-6">

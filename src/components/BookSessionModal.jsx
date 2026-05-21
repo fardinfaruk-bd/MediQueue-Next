@@ -2,8 +2,6 @@
 import { authClient } from '@/lib/auth-client';
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
 import { useRouter } from 'next/navigation';
-
-
 import React from 'react';
 import { FaStamp } from 'react-icons/fa';
 import { toast } from 'react-toastify';
@@ -24,7 +22,7 @@ const BookSessionModal = ({ tutor, user }) => {
             status: "success",
         };
         const { data: tokenData } = await authClient.token();
-        console.log(data);
+        console.log(tokenData);
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions`, {
             method: "POST",
             headers: {
@@ -33,18 +31,20 @@ const BookSessionModal = ({ tutor, user }) => {
             },
             body: JSON.stringify(BookedSessionData),
         });
+
         const BookedData = await res.json();
-        toast.success(`Successfully Booked ${BookedSessionData.tutorName}!`);
         router.refresh();
+        toast.success(`Successfully Booked ${BookedSessionData.tutorName}!`);
+        
     }
 
-    const isBookedAllowed = new Date().setHours(0, 0, 0, 0) > new Date(tutor.sessionEndDate).setHours(0, 0, 0, 0) 
-        console.log(isBookedAllowed, "Book validation");
+    const isBookedAllowed = new Date().setHours(0, 0, 0, 0) > new Date(tutor.sessionEndDate).setHours(0, 0, 0, 0)
+    console.log(isBookedAllowed, "Book validation");
 
     return (
-        
+
         <Modal>
-            <Button disabled className={"w-full"}isDisabled={isBookedAllowed || tutor.totalSlot === 0}>Book Session</Button>
+            <Button disabled className={"w-full"} isDisabled={isBookedAllowed || tutor.totalSlot === 0}>Book Session</Button>
             <Modal.Backdrop>
                 <Modal.Container placement="auto">
                     <Modal.Dialog className="sm:max-w-md">
