@@ -2,7 +2,7 @@ import NoDataFound from '@/components/NoDataFound';
 import UpdateTutorModal from '@/components/UpdateTutorModal';
 import { auth } from '@/lib/auth';
 import { TrashBin } from '@gravity-ui/icons';
-import { Button, Table } from '@heroui/react';
+import { AlertDialog, Button, Table } from '@heroui/react';
 import { headers } from 'next/headers';
 import React from 'react';
 
@@ -57,7 +57,7 @@ const MyTutorsPage = async () => {
                                     <Table.Cell>{new Date(tutor.registeredDate).toLocaleDateString()}</Table.Cell>
                                     <Table.Cell>
                                         <UpdateTutorModal tutor={tutor} />
-                                        <Button variant='outline' className={"border border-red-500 text-red-500"}><TrashBin /></Button>  
+                                        <AlertDialog tutor={tutor}/>
                                     </Table.Cell>
                                 </Table.Row>
                             ))}
