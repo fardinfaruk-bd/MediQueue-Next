@@ -35,7 +35,7 @@ const BookSessionModal = ({ tutor, user }) => {
         const BookedData = await res.json();
         router.refresh();
         toast.success(`Successfully Booked ${BookedSessionData.tutorName}!`);
-        
+
     }
 
     const isBookedAllowed = new Date().setHours(0, 0, 0, 0) > new Date(tutor.sessionEndDate).setHours(0, 0, 0, 0)
@@ -63,23 +63,38 @@ const BookSessionModal = ({ tutor, user }) => {
                                 <form className="flex flex-col gap-4" onSubmit={handleBookSession}>
                                     <TextField className="w-full" name="StudentName" type="text" defaultValue={`${user?.name}`}>
                                         <Label>Student Name</Label>
-                                        <Input placeholder="Enter your name" disabled/>
+                                        <Input placeholder="Enter your name" readOnly />
                                     </TextField>
-                                    <TextField className="w-full" name="StudentPhone" type="tel" required>
+                                    <TextField
+                                        className="w-full"
+                                        name="StudentPhone"
+                                        type="tel"
+                                        isRequired
+                                        validationBehavior="native"
+                                    >
                                         <Label>Phone</Label>
-                                        <Input placeholder="Enter your phone number" />
+
+                                        <Input
+                                            placeholder="Enter your phone number"
+                                            pattern="[0-9]*"
+                                            inputMode="numeric"
+                                            maxLength={11}
+                                            onInput={(e) => {
+                                                e.target.value = e.target.value.replace(/\D/g, "");
+                                            }}
+                                        />
                                     </TextField>
                                     <TextField className="w-full" name="tutorName" type="text" defaultValue={`${tutor.tutorName}`} >
                                         <Label>Tutor Name</Label>
-                                        <Input placeholder="Enter the tutor's name" disabled/>
+                                        <Input placeholder="Enter the tutor's name" readOnly />
                                     </TextField>
                                     <TextField className="w-full" name="tutorId" type="text" defaultValue={`${tutor._id}`} >
                                         <Label>Tutor Id</Label>
-                                        <Input placeholder="Enter the tutor's id" disabled/>
+                                        <Input placeholder="Enter the tutor's id" readOnly />
                                     </TextField>
                                     <TextField className="w-full" name="StudentEmail" type="email" defaultValue={`${user?.email}`}>
                                         <Label></Label>
-                                        <Input placeholder="Enter your email" disabled/>
+                                        <Input placeholder="Enter your email" readOnly />
                                     </TextField>
 
                                     <Modal.Footer>

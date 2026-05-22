@@ -1,13 +1,34 @@
 import CancelButton from '@/components/CancelBtn';
 import NoDataFound from '@/components/NoDataFound';
+import { auth } from '@/lib/auth';
 import { getBookedSessions } from '@/lib/data';
 import { Table } from '@heroui/react';
+import { headers } from 'next/headers';
 import React from 'react';
 
 
 const BookedSessionPage = async () => {
-    const BookSessions = await getBookedSessions();
-    console.log(BookSessions);
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+    console.log("session:", session);
+
+    if (!session) {
+        return <div>Not logged in</div>;
+    }
+
+    const { token } = await auth.api.getToken({
+        headers: await headers(),
+    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked-sessions?email=${session.user.email}`,
+        {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        },
+    );
+    const BookSessions = await res.json();
+    console.log("booked sessions are", BookSessions);
     return (
         <div className='w-[90%] mx-auto min-h-screen'>
             {BookSessions?.length === 0 ? <NoDataFound /> : <Table>
