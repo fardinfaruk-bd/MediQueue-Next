@@ -1,6 +1,6 @@
 
 import InfoUpdateModal from '@/components/InfoUpdateModal';
-import { authClient } from '@/lib/auth-client';
+import { auth } from '@/lib/auth';
 import Image from 'next/image';
 import React from 'react';
 
