@@ -1,4 +1,4 @@
-"use client";
+
 import InfoUpdateModal from '@/components/InfoUpdateModal';
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
