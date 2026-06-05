@@ -1,4 +1,3 @@
-import NotFound from '@/app/not-found';
 import BookSessionModal from '@/components/BookSessionModal';
 import { auth } from '@/lib/auth';
 import { getTutorById } from '@/lib/data';
@@ -10,14 +9,14 @@ import { MdVerified } from 'react-icons/md';
 
 export const generateMetadata = async({params}) => {
     const { id } = await params;
-    const tutor = await getTutorById({ id });
+    const tutor = await getTutorById( id );
 
     return {
         title: tutor.tutorName + " - MediQueue",
-        description: tutor.description,
-    }
-
+        description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences."
+    };
 };
+
 
 const AllDetailsPage = async ({ params }) => {
     const session = await auth.api.getSession({
@@ -28,8 +27,6 @@ const AllDetailsPage = async ({ params }) => {
     const { id } = await params;
     const tutorDetails = await getTutorById(id);
 
-    
-    console.log(tutorDetails);
     return (
         <div >
             <Card className='min-h-[60vh] rounded-none flex items-center justify-center'>
