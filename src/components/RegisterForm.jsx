@@ -2,7 +2,7 @@ import { Check } from '@gravity-ui/icons';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
