@@ -5,12 +5,14 @@ import Image from 'next/image';
 import React from 'react';
 
 export const metadata = {
-  title: "Profile - MediQueue",
-  description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences.",
+    title: "Profile - MediQueue",
+    description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences.",
 };
 
-const userProfilePage = () => {
-    const { data: session } = authClient.useSession();
+const userProfilePage = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
     const user = session?.user;
     return (
         <div className='min-h-[80vh] flex justify-center items-center'>
