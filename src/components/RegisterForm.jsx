@@ -1,3 +1,4 @@
+"use client"
 import { Check } from '@gravity-ui/icons';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
