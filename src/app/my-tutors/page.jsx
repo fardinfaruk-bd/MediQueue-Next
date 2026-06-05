@@ -7,6 +7,11 @@ import { Table } from '@heroui/react';
 import { headers } from 'next/headers';
 import React from 'react';
 
+export const metadata = {
+  title: "My Tutors - MediQueue",
+  description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences.",
+};
+
 
 const MyTutorsPage = async () => {
     const session = await auth.api.getSession({

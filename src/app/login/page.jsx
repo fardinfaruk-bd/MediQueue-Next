@@ -10,7 +10,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
-
+export const metadata = {
+  title: "Login - MediQueue",
+  description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences.",
+};
 const LoginPage = () => {
     const [isShowPassword, setIsShowPassword] = useState(false)
     const OnSubmit = async (e) => {

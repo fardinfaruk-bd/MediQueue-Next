@@ -6,8 +6,18 @@ import { Card } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
-
 import { MdVerified } from 'react-icons/md';
+
+export const generateMetadata = async({params}) => {
+    const { id } = await params;
+    const tutor = await getTutorById({ id });
+
+    return {
+        title: tutor.tutorName + " - MediQueue",
+        description: tutor.description,
+    }
+
+};
 
 const AllDetailsPage = async ({ params }) => {
     const session = await auth.api.getSession({

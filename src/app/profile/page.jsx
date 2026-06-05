@@ -4,6 +4,11 @@ import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import React from 'react';
 
+export const metadata = {
+  title: "Profile - MediQueue",
+  description: "MediQueue is a Best Online Platform to Connect with Top Tutors and Students for Personalized Learning Experiences.",
+};
+
 const userProfilePage = () => {
     const { data: session } = authClient.useSession();
     const user = session?.user;
