@@ -63,6 +63,88 @@ MeiQueue provides:
 - Simple and fast tutor discovery
 
 ---
+## ⚙️ Getting Started & Installation
+
+Follow these instructions to set up and run MediQueue locally on your machine.
+
+### 📋 Prerequisites
+
+Before starting, ensure you have the following installed on your system:
+- **Node.js:** `v18.17.0` or higher
+- **Package Manager:** `npm`, `yarn`, or `pnpm`
+- **Database:** Local **MongoDB** instance or a cloud **MongoDB Atlas** database.
+
+---
+
+### 📥 Step-by-Step Installation
+
+<Sequence>
+  <Step title="Clone the Repository" subtitle="Terminal command">
+    Clone the project repository to your local system and navigate to the project root:
+    ```bash
+    git clone https://github.com/fardinfaruk-bd/MediQueue-Next.git
+    cd mediqueue
+    ```
+  </Step>
+
+  <Step title="Install Dependencies" subtitle="Package management">
+    Install all required dependencies using your preferred package manager:
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+  </Step>
+
+  <Step title="Configure Environment Variables" subtitle="Root configuration">
+    Create a `.env.local` file in the root directory of the project:
+    ```bash
+    touch .env.local
+    ```
+
+    Add the required environment variables:
+
+    ```env
+    # App Configuration
+    NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+    # Database
+    MONGODB_URI=your_mongodb_connection_string
+
+    # Authentication (Better Auth)
+    BETTER_AUTH_SECRET=your_better_auth_secret_key
+    BETTER_AUTH_URL=http://localhost:3000
+    ```
+  </Step>
+
+  <Step title="Run the Development Server" subtitle="Launch application">
+    Start the Next.js local development server:
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+  </Step>
+</Sequence>
+
+---
+
+### 🧪 Project Scripts
+
+| Command | Action |
+| --- | --- |
+| `npm run dev` | Launches the local development server |
+| `npm run build` | Builds the production application bundle |
+| `npm run start` | Runs the compiled production build locally |
+| `npm run lint` | Runs ESLint to check for code issues |
+
+---
 
 ## 👨‍💻 Author
 
