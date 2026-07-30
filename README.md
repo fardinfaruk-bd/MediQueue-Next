@@ -129,7 +129,7 @@ Before starting, ensure you have the following installed on your system:
     pnpm dev
     ```
 
-    Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+    Open http://localhost:3000 in your browser to view the application.
   </Step>
 </Sequence>
 
