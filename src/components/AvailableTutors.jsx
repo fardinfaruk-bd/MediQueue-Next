@@ -7,7 +7,7 @@ export default async function ExpertTutorsSection() {
   const tutorsData = await getAvailableTutors();
 
   return (
-    <section className="bg-[#faf9fe] py-16 md:py-24">
+    <section className=" py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">

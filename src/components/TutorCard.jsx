@@ -18,7 +18,7 @@ export default function TutorCard({ tutor }) {
   } = tutor;
 
   return (
-    <div className="bg-white rounded-3xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex flex-col justify-between max-w-sm w-full">
+    <div className=" rounded-3xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex flex-col justify-between max-w-sm w-full">
       
       <div className="relative rounded-2xl overflow-hidden aspect-4/3 w-full mb-4 bg-gray-100">
         <Image

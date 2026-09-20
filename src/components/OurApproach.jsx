@@ -4,10 +4,12 @@ import Link from 'next/link';
 import React from 'react';
 import { GoVerified } from 'react-icons/go';
 import { LuBookOpenText } from 'react-icons/lu';
+import PersonalizedGuidance from './PersonalizedGuidance';
 
 const OurApproach = () => {
     return (
         <section className="py-24 max-w-7xl mx-auto">
+            <PersonalizedGuidance />
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                 <div className="md:col-span-8 bg-[#EEF0FF] rounded-xl p-10 flex flex-col justify-between">
                     <div>
