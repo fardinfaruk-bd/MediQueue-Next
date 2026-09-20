@@ -5,6 +5,7 @@ import { getAvailableTutors } from '@/lib/data';
 
 export default async function ExpertTutorsSection() {
   const tutorsData = await getAvailableTutors();
+  console.log(tutorsData);
 
   return (
     <section className=" py-16 md:py-24">
