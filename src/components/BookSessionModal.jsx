@@ -39,7 +39,6 @@ const BookSessionModal = ({ tutor, user }) => {
     }
 
     const isBookedAllowed = new Date().setHours(0, 0, 0, 0) > new Date(tutor.sessionEndDate).setHours(0, 0, 0, 0)
-    console.log(isBookedAllowed, "Book validation");
 
     return (
 
