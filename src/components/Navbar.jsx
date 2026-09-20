@@ -19,7 +19,7 @@ const Navbar = () => {
         router.refresh();
     };
     return (
-        <div className="navbar shadow-sm">
+        <div className="navbar shadow-sm sticky bg-white/90 top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown z-10">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
